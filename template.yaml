@@ -23,7 +23,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Description: cria um cliente no mercado pago
-      FunctionName: !Join ["_", [!Ref Environment, "escoladesoftware-mercadopago-lambdaAtualizarclientefn"]]
+      FunctionName: !Join ["_", [!Ref Environment, "escoladesoftware-mercadopago-lambdaatualizarclientefn"]]
       Handler: app.lambdaHandler
       CodeUri: src/
       Runtime: nodejs18.x
