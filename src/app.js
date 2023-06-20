@@ -17,24 +17,18 @@ exports.lambdaHandler = async (event, context) => {
             .then(async (response) => {
                 if (response.ok) {
                     const respostaJson = await response.json();
-
-                    console.log(respostaJson);
                     idCliente = respostaJson.results[0].id;
                 }
             });
 
-        console.log(idCliente);
-
-        // await integracaoMercadoPago.atualizaDadosCliente(segredo.Parameter.Value, objetoCliente)
-        //     .then(async (response) => {
-        //         if (!response.ok) {
-        //             const error = await response.json();
-        //             console.log(error);
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
+        await integracaoMercadoPago.atualizaDadosCliente(segredo.Parameter.Value,
+            objetoCliente, idCliente)
+            .then(async (response) => {
+                if (!response.ok) {
+                    const error = await response.json();
+                    console.log(error);
+                }
+            });
     }
     catch (error) {
         console.log(error);
